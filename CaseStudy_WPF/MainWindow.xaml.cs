@@ -39,25 +39,21 @@ namespace CaseStudy_WPF
             try
             {
                 ClearAll();
-
                 APIResponseModel emp = EmployeeService.GetAllEmployee(pageNo);
-
                 totalRecords = emp.Meta.pagination.Total;
                 totalPages = emp.Meta.pagination.Pages;
                 currentPage = emp.Meta.pagination.Page;
                 employeeDetails = emp.data;
-
                 EmployeeGrid.ItemsSource = emp.data;
-
-                SetEmpGridPage();
+                EmployeeGridPagination();
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Unable to fetch the employee details atm please try after sometime. message: {ex.Message}");
+                MessageBox.Show("Due to some issue not able to fetch employee details");
             }
         }
 
-        private void SetEmpGridPage()
+        private void EmployeeGridPagination()
         {
             var records = currentPage == totalPages ? totalRecords : currentPage * pageLimit;
             //lblpageInformation.Content = records + " of " + totalRecords;
@@ -66,12 +62,12 @@ namespace CaseStudy_WPF
         {
             try
             {
-               EmployeeService.DeleteEmployeeData(Convert.ToInt32(id_txt.Text));
+                EmployeeService.DeleteEmployee(Convert.ToInt32(id_txt.Text));
                 BindEmployeeGrid(1);
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Unable to delete the record atm please try again later.");
+                MessageBox.Show("Due to some issue not able to delete the employee detail");
             }
         }
 
@@ -89,11 +85,6 @@ namespace CaseStudy_WPF
             ClearAll();
         }
 
-        private void save_btn_Click(object sender, RoutedEventArgs e)
-        {
-            
-        }
-
         private void addNewbtn_Click(object sender, RoutedEventArgs e)
         {
             try
@@ -107,13 +98,12 @@ namespace CaseStudy_WPF
                 if (response.IsSuccessStatusCode)
                 {
                     BindEmployeeGrid(1);
-
                     response.Dispose();
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Unable to add employee atm please try again later.");
+                MessageBox.Show("Due to some issue not able to add employee detail.");
             }
         }
 
@@ -122,19 +112,17 @@ namespace CaseStudy_WPF
             try
             {
                 EmployeeDetails empDetail = new EmployeeDetails();
-
                 empDetail.Id = Convert.ToInt64(id_txt.Text);
                 empDetail.Name = name_txt.Text;
                 empDetail.Email = email_txt.Text;
                 empDetail.Gender = male_radio.IsChecked == true ? Common.male : Common.female;
                 empDetail.Status = status_check.IsChecked == true ? Common.active : Common.inactive;
-                EmployeeService.UpdateEmployeeDetailsAsync(empDetail);
+                EmployeeService.UpdateEmployeeAsync(empDetail);
                 BindEmployeeGrid(1);
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Unable to update employee details due to the below error," +
-                    " please try again after some time or connect to the IT support team." + Environment.NewLine + ex.Message);
+                MessageBox.Show("Due to some issue not able to update employee detail");
             }
         }
 
@@ -144,12 +132,10 @@ namespace CaseStudy_WPF
             {
                 if (!string.IsNullOrWhiteSpace(id_txt.Text))
                 {
-
                     var employeeDetail = EmployeeService.GetEmployeeDetails(Convert.ToInt32(id_txt.Text));
-
                     if (!string.IsNullOrWhiteSpace(employeeDetail.Email))
                     {
-                        loadFieldsData(employeeDetail);
+                        FillEmployeeData(employeeDetail);
                     }
 
                 }
@@ -160,11 +146,11 @@ namespace CaseStudy_WPF
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Unable to fetch employee detail please try again after sometime.");
+                MessageBox.Show("Due to some issue not able to find the employee detail");
             }
         }
 
-        private void loadFieldsData(EmployeeDetails employeeDetail)
+        private void FillEmployeeData(EmployeeDetails employeeDetail)
         {
             email_txt.Text = employeeDetail.Email;
             name_txt.Text = employeeDetail.Name;
