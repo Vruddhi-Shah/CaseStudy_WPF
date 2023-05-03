@@ -7,6 +7,47 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-        
+        <DataGrid HorizontalAlignment="Left" Height="153" Margin="50,35,0,0" VerticalAlignment="Top" Width="705"  x:Name="EmployeeGrid"/>
+        <Button x:Name="addNewbtn" Content="Add New +" HorizontalAlignment="Left" Margin="323,358,0,0" VerticalAlignment="Top" Width="75" Click="addNewbtn_Click"/>
+        <Label x:Name="name_label" Content="Name" HorizontalAlignment="Left" Margin="50,210,0,0" VerticalAlignment="Top" Width="148"/>
+        <Label x:Name="gender_label" Content="Gender" HorizontalAlignment="Left" Margin="638,210,0,0" VerticalAlignment="Top" Width="64"/>
+        <Label x:Name="status_label" Content="Status" HorizontalAlignment="Left" Margin="481,210,0,0" VerticalAlignment="Top" Width="100" RenderTransformOrigin="-0.499,0.546"/>
+        <TextBox x:Name="name_txt" HorizontalAlignment="Left" Height="23" Margin="50,241,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="148"/>
+        <TextBox x:Name="email_txt" HorizontalAlignment="Left" Height="23" Margin="236,241,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="214"/>
+        <!--<TextBox HorizontalAlignment="Left" Height="23" Margin="50,241,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="228"/>-->
+        <Label x:Name="email_label" Content="Email" HorizontalAlignment="Left" Margin="236,211,0,0" VerticalAlignment="Top" Width="148" RenderTransformOrigin="1.105,0.755"/>
+        <RadioButton x:Name="male_radio" Content="Male" HorizontalAlignment="Left" Margin="594,241,0,0" VerticalAlignment="Top"/>
+        <RadioButton x:Name="female_radio" Content="Female" HorizontalAlignment="Left" Margin="659,241,0,0" VerticalAlignment="Top"/>
+        <CheckBox x:Name="status_check" Content="Active" Margin="481,241,0,0" VerticalAlignment="Top" Width="73" HorizontalAlignment="Left" Height="23"/>
+        <!--<ComboBox x:Name="status_combo" HorizontalAlignment="Left" Margin="598,242,0,0" VerticalAlignment="Top" Width="157" RenderTransformOrigin="0.187,0.752" Height="23"/>-->
+        <Button x:Name="delete_btn" Content="Delete" HorizontalAlignment="Left" Margin="564,358,0,0" VerticalAlignment="Top" Width="75" Click="Delete_Click"/>
+        <Button x:Name="update_btn" Content="Update" HorizontalAlignment="Left" Margin="446,358,0,0" VerticalAlignment="Top" Width="75" RenderTransformOrigin="-1.14,0.466" Click="update_btn_Click"/>
+        <!--<StackPanel Orientation="Horizontal" 
+            HorizontalAlignment="Left" Margin="22,0,0,10" Width="268" Height="26" VerticalAlignment="Bottom" Grid.ColumnSpan="2" Grid.Column="1" RenderTransformOrigin="0.959,0.551">
+            <Button Height="23" HorizontalAlignment="Left"  
+                x:Name="btnFirst" VerticalAlignment="Bottom" 
+                Width="40" Content="&lt;&lt;" 
+                Click="btnFirst_Click" Opacity="0.75" RenderTransformOrigin="4.04,0.351"/>
+            <Button Height="23"  VerticalAlignment="Bottom" 
+                Name="btnPrev" Width="40" Click="btnPrev_Click" 
+                Opacity="0.75" Content="&lt;"/>
+
+            <Label x:Name="lblpageInformation" 
+                HorizontalContentAlignment="Center" 
+                HorizontalAlignment="Left" Height="30" 
+                Width="100" VerticalContentAlignment="Center" 
+                VerticalAlignment="Bottom"/>
+            <Button Height="23" HorizontalAlignment="Right" 
+                Name="btnNext" VerticalAlignment="Bottom" 
+                Width="40" Content="&gt;" 
+                Click="btnNext_Click" Opacity="0.75" RenderTransformOrigin="0.428,-0.605"/>
+            <Button HorizontalAlignment="Right" Width="54" 
+                x:Name="btnLast" Click="btnLast_Click" 
+                Opacity="0.75" Content="&gt;&gt;" RenderTransformOrigin="1.881,0.499" Height="23" VerticalAlignment="Bottom"/>
+        </StackPanel>-->
+        <Button x:Name="clear_btn" Content="Clear All" HorizontalAlignment="Left" Margin="694,358,0,0" VerticalAlignment="Top" Width="75" Click="clear_btn_Click"/>
+        <Button x:Name="search_btn" Content="Search" HorizontalAlignment="Left" Margin="680,10,0,0" VerticalAlignment="Top" Width="75" Click="search_btn_Click"/>
+        <Label x:Name="id_label" Content="ID" HorizontalAlignment="Left" Margin="256,305,0,0" VerticalAlignment="Top" RenderTransformOrigin="2.709,0.008"/>
+        <TextBox x:Name="id_txt" HorizontalAlignment="Left" Height="26" Margin="301,305,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="63" RenderTransformOrigin="2.391,-1.043"/>
     </Grid>
 </Window>
